@@ -7,15 +7,19 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postInstall": "patch-package"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/picker": "^1.8.1",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
     "async-storage": "^0.1.0",
+    "clone-deep": "^4.0.1",
     "jetifier": "^1.6.6",
+    "patch-package": "^6.2.2",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-elements": "^3.2.0",
@@ -25,6 +29,7 @@
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.17.1",
     "react-native-stack": "^1.0.0-alpha11",
+    "react-native-stars": "^1.2.2",
     "react-native-vector-icons": "^8.0.0",
     "react-navigation": "^4.4.4",
     "react-navigation-material-bottom-tabs": "^2.3.4"

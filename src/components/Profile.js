@@ -1,62 +1,42 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React from 'react';
-import { Button, Text, ScrollView, Alert } from 'react-native';
+import { Button, Text, ScrollView, Alert, View } from 'react-native';
+
+/*
+    Going to include:
+    - Show Likes
+    - Show My Reviews
+    - Show My Favourite Locations
+*/
 
 class Profile extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            profileData: [],
-            id: "",
-            token: "",
-            newValue: ""
-        }
-    }
-
-    componentDidMount = async () => {
-        try{
-            this.setState({'id': await AsyncStorage.getItem('id'),'token': await AsyncStorage.getItem('token')})
-        } catch (error) {
-            console.log(error)
-        }
-        console.log('id: ' + this.state.id + ' token: ' + this.state.token);
-    }
-
-    handleLogoutButton = async () => {
-        console.log('Logout Called!');
-        try {
-            const token = this.state.token;
-            console.log('token: ' + token)
-            let response = await fetch('http://10.0.2.2:3333/api/1.0.0/user/logout',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                    'X-Authorization': token
-                }
-            })
-            .then(() => {
-                Alert.alert('Successfully Logged Out!')
-                this.props.navigation.navigate('Login')
-            })
-        } catch (error) {
-            console.log(error)
-        }
     }
 
     render() {
         return(
-            <ScrollView>
-                <Text>Profile!</Text>
-                <Button 
-                    title={'Logout'}
-                    onPress={this.handleLogoutButton}
+            <View>
+                <Text>Profile</Text>
+                <Button
+                    title={'My Liked Reviews'}
+                    onPress={() => {
+                        console.log()
+                    }}
                 />
-                <Button 
-                    title={'Update Details'}
-                    onPress={() => this.props.navigation.navigate('UpdateDetails')}
+                <Button
+                    title={'My Favourited Locations'}
+                    onPress={() => {
+                        console.log('My Favourite Locations')
+                    }}
                 />
-            </ScrollView>
+                <Button
+                    title={'My Reviews'}
+                    onPress={() => {
+                        console.log('My Reviews Reviews')
+                    }}
+                />
+            </View>
         )
     }
 }

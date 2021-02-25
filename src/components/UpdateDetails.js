@@ -1,7 +1,6 @@
 import React from 'react';
 import { Alert, Button, TextInput, Text, ScrollView, View } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import UpdateEntry from './UpdateEntry';
 
 class UpdateDetails extends React.Component {
     constructor(props) {
@@ -18,7 +17,7 @@ class UpdateDetails extends React.Component {
         try{
             this.setState({'id': await AsyncStorage.getItem('id'),'token': await AsyncStorage.getItem('token')})
         } catch (error) {
-            console.log(error)
+            console.error(error)
         }
         console.log('good id: ' + this.state.id + ' token: ' + this.state.token);
         this.getData();
@@ -62,15 +61,12 @@ class UpdateDetails extends React.Component {
                 )
             })
             .then(response => {
-                if (response.ok){  
-                    return response.json()
-                } else {
-                    console.log(response.statusText)
-                }
+                return response.json()
             })
             .then(responseData => {
                 console.log('ResponseData: ' + responseData)
                 this.setState({userData: responseData})
+                this.getData()
             });
         } catch (error){
             console.log(error)
@@ -96,7 +92,10 @@ class UpdateDetails extends React.Component {
                         placeholder={this.state.userData.first_name}
                         onChangeText={text => this.handleNewDetails('first_name', text)}
                     />
-                    <Button title={'Submit'} onPress={text => this.patchUserDetails('first_name',text)}/>
+                    <Button title={'Submit'} onPress={text => {
+                        this.patchUserDetails('first_name', text);
+                        this.props.navigation.navigate('UpdateDetails');
+                    }}/>
                 </View>
                 <View style={{flexDirection: 'row', flex:1}}>
                     <Text>Last Name</Text>
@@ -104,7 +103,10 @@ class UpdateDetails extends React.Component {
                         placeholder={this.state.userData.last_name}
                         onChangeText={text => this.handleNewDetails('last_name', text)}
                     />
-                    <Button title={'Submit'}/>
+                    <Button title={'Submit'} onPress={text => {
+                        this.patchUserDetails('last_name', text);
+                        this.props.navigation.navigate('UpdateDetails');
+                    }}/>
                 </View>
                 <View style={{flexDirection: 'row', flex:1}}>
                     <Text>Email</Text>
@@ -112,11 +114,14 @@ class UpdateDetails extends React.Component {
                         placeholder={this.state.userData.email}
                         onChangeText={text => this.handleNewDetails('email', text)}
                     />
-                    <Button title={'Submit'}/>
+                    <Button title={'Submit'} onPress={text => {
+                        this.patchUserDetails('email', text);
+                        this.props.navigation.navigate('UpdateDetails');
+                    }}/>
                 </View>
                 <Button 
                     title={'Back'}
-                    onPress={() => {this.props.navigation.navigate('Profile')}}
+                    onPress={() => {this.props.navigation.navigate('Settings')}}
                 />
             </ScrollView>
         )
