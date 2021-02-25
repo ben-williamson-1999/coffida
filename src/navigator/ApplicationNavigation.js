@@ -6,6 +6,7 @@ import { Icon } from 'react-native-elements';
 
 import Home from '../components/Home'
 import Profile from '../components/Profile'
+import Settings from '../components/Settings'
 
 const TabContents = 
 {
@@ -19,6 +20,15 @@ const TabContents =
     }
   },
   Profile: {screen:Profile,
+    navigationOptions:{
+      tabBarIcon:() => (
+        <View>
+          <Icon name={'person'}/>
+        </View>
+      )
+    }
+  },
+  Settings: {screen:Settings,
     navigationOptions:{
       tabBarIcon:() => (
         <View>

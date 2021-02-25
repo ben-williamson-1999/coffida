@@ -41,7 +41,7 @@ class NewUser extends React.Component {
     }
 
     handleLoginRouteButton = () => {
-        this.props.navigation.navigate('Login')
+        this.props.navigation.navigate('Login',)
     }
 
     render(){
