@@ -1,7 +1,4 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import AuthNavigation from './AuthorisedNavigator';
 import AppNavigation from './ApplicationNavigation';
 import ProfileNavigation from './ProfileNavigation';
@@ -9,16 +6,16 @@ import SearchNavigation from './SearchNavigator';
 
 const SwitchNavigator = createSwitchNavigator(
   {
-    Auth:AuthNavigation,
-    App:AppNavigation,
-    Update:ProfileNavigation,
-    Search:SearchNavigation
+    Auth: AuthNavigation,
+    App: AppNavigation,
+    Update: ProfileNavigation,
+    Search: SearchNavigation,
   },
   {
-    initialRouteName: 'Auth'
-  }
-)
+    initialRouteName: 'Auth',
+  },
+);
 
-const AppContainer = createAppContainer(SwitchNavigator)
+const AppContainer = createAppContainer(SwitchNavigator);
 
 export default AppContainer;

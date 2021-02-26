@@ -1,36 +1,37 @@
 import React from 'react';
-import { Alert, Button, TextInput, Text, View } from 'react-native';
+import {View} from 'react-native';
 
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import { Icon } from 'react-native-elements';
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
+import {Icon} from 'react-native-elements';
 
-import Login from '../components/Login'
-import NewUser from '../components/NewUser'
+import Login from '../components/Login';
+import NewUser from '../components/NewUser';
 
-const TabContents =
-{
-  NewUser :{screen:NewUser,
-    navigationOptions:{
-      tabBarIcon:() => (
+const TabContents = {
+  NewUser: {
+    screen: NewUser,
+    navigationOptions: {
+      tabBarIcon: () => (
         <View>
-          <Icon name={'home'}/>
+          <Icon name={'home'} />
         </View>
-      )
-    }
+      ),
+    },
   },
-  Login :{screen:Login,
-    navigationOptions:{
-      tabBarIcon:() => (
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      tabBarIcon: () => (
         <View>
-          <Icon name={'login'}/>
+          <Icon name={'login'} />
         </View>
-      )
-    }
-  }
-}
+      ),
+    },
+  },
+};
 
-const AuthNavigation = createMaterialBottomTabNavigator(
-    TabContents,{initialRouteName:'Login'}
-)
+const AuthNavigation = createMaterialBottomTabNavigator(TabContents, {
+  initialRouteName: 'Login',
+});
 
 export default AuthNavigation;

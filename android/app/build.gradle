@@ -132,9 +132,12 @@ android {
         applicationId "com.coffida"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled true
+        missingDimensionStrategy 'react-native-camera', 'general'
         versionCode 1
         versionName "1.0"
     }
+
     splits {
         abi {
             reset()
